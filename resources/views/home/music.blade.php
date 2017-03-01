@@ -1,33 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh-cmn-Hans">
 <head>
-    <meta charset="UTF-8">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="renderer" content="webkit">
-	<meta name="version" content="1.0.0">
-	<meta name="author" content="smohan,http://www.smohan.net/">
-    <link rel="stylesheet" type="text/css" href="http://www.52player.com/Demos/Images/common.css">
-    <link rel="stylesheet" type="text/css" href="http://www.52player.com/Demos/Images/style.css">
-    <link rel="stylesheet" href="{{asset('music/css/smusic.css')}}"/>
-    <title>HTML5音乐播放器SMusic</title>
-	<style rel="stylesheet">
-		.page-title{
-			margin:30px;
-			text-align:center;
-			color:#fff;
-			font-size:18px;
-		}
-		.page-title h1{
-			font-size:30px;
-			padding:30px 0;
-		}
-		.page-title a{
-			color:#fff;
-		}
-	</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link rel="stylesheet" href="{{asset('src/css/smusic.css')}}"/>
+<title>作品播放</title>
 </head>
 <body>
 <div class="grid-music-container f-usn">
@@ -63,13 +41,42 @@
     <div class="f-cb">&nbsp;</div>
     <div class="m-music-list-wrap"></div>
 </div>
-
-<script src="{{asset('music/js/musicList.js')}}"></script>
-<script src="{{asset('music/js/smusic.min.js')}}"></script>
+<script src="{{asset('src/js/smusic.min.js')}}"></script>
 <script>
-    new SMusic({
-        musicList : musicList
-    });
+var musicList = [
+	{
+		title : '成都',
+		singer : '赵雷',
+		cover  : 'images/Maroon5.jpg',
+		src    : 'http://www.blessathene.com/images/chengdu.mp3'
+	},
+	{
+		title : '不必在乎我是谁',
+		singer : '林忆莲',
+		cover  : 'images/yangcong.jpg',
+		src    : 'http://www.blessathene.com/images/ss.mp3'
+	},	
+	{
+		title : '绅士',
+		singer : '薛治国',
+		cover  : 'images/yangcong.jpg',
+		src    : 'http://www.blessathene.com/images/shenshi.mp3'
+	},
+	{
+		title : '从此以后',
+		singer : '吴亦凡',
+		cover  : 'images/yangcong.jpg',
+		src    : 'http://www.blessathene.com/images/congci.mp3'
+	}
+];
+new SMusic({
+	musicList:musicList
+});
 </script>
+
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+<!--<p>适用浏览器：360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗. 不支持IE8及以下浏览器。</p>-->
+<!--<p>来源：<a href="http://sc.chinaz.com/" target="_blank">站长素材</a></p>-->
+</div>
 </body>
 </html>

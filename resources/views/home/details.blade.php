@@ -8,18 +8,21 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="stylesheet" type="text/css" href="{{asset('home/css/style.css')}}"/>
+		<link rel="stylesheet" href="{{asset('dist/css/swiper.min.css')}}">
 	</head>
 	<body>
 		<header>
 			<div class="sort-top">
 					<div class="sort-top-one">
-					<a href="{{asset('/home/index')}}">〈</a>
+					<a href="{{asset('/home/index')}}">
+						<img src="../images/top-01.png"/>
+					</a>
 					</div>
 					<div class="sort-top-two">
 					个人详情
 					</div>
 					<div class="sort-top-three">
-					…
+						<img src="../images/top-02.png"/>
 					</div>
 			</div>
 			<nav class="sort-herd">
@@ -45,14 +48,14 @@
 			</ul>
 			<div class="company-box">
 				<ul class="company-introwrap" id="top-none" style="display: none">
-					<a class="font40 fontwhite company-introitem index-compcur" href="../index.html"><li>首页</li></a>
-					<a class="font40 fontwhite company-introitem" href="dynamic.html"><li>动态</li></a>
-					<a class="font40 fontwhite company-introitem" href="sort.html"><li>排行榜</li></a>
-					<a class="font40 fontwhite company-introitem" href="concert.html"><li>演唱会</li></a>
-					<a class="font40 fontwhite company-introitem" href="sort.html"><li>醉强音</li></a>
-					<a class="font40 fontwhite company-introitem" href="sort.html"><li>原创</li></a>
-					<a class="font40 fontwhite company-introitem" href="comic.html"><li>声声漫画</li></a>
-					<a class="font40 fontwhite company-introitem" href="#"><li>ˇ</li></a>
+					<a class="font40 fontwhite company-introitem index-compcur" href="{{asset('/home/index')}}"><li>首页</li></a>
+					<a class="font40 fontwhite company-introitem" href="{{asset('/home/dynamic')}}"><li>动态</li></a>
+					<a class="font40 fontwhite company-introitem" href="{{asset('/home/sort')}}"><li>排行榜</li></a>
+					<a class="font40 fontwhite company-introitem" href="{{asset('/home/concert')}}"><li>演唱会</li></a>
+					<a class="font40 fontwhite company-introitem" href="{{asset('/home/sorts')}}"><li>醉强音</li></a>
+					<a class="font40 fontwhite company-introitem" href="{{url('/home/original')}}"><li>原创</li></a>
+					<a class="font40 fontwhite company-introitem" href="{{asset('/home/comic')}}"><li>声声漫画</li></a>
+					<a class="font40 fontwhite company-introitem" href="#"><li><img class="imgone" src="{{asset('images/index-x.png')}}"/></li></a>
 				</ul>
 				<span class="company-conpic">
 					<img src="../images/top.png"/>
@@ -67,7 +70,7 @@
 				</div>
 				<div class="xq-box-center">
 					<span>{{$result['dname']}}<span>
-					<img src="{{asset('images/xq-3.png')}}" class="dianji"/>
+					<img src="{{asset('images/xq-01.png')}}" class="dianji"/>
 					<span id="dianzai">{{$result['dzai']}}</span>
 					<span id="uid" style="display:none">{{$result['uid']}}</span>
 					<span id="sid" style="display:none">{{session('uid')}}</span>
@@ -99,7 +102,7 @@
 			 @else($result['dxingzuo'] == '天蝎座')
 			 <img class="djimg" src="{{asset('images/youke/tianxie.png')}}" />
 			 @endif
-	    <span>等级：游客</span>
+	    <span><font color="red">等级：</font>游客</span>
 	  @elseif($result['dzai']>=1 && $result['dzai']<=100)
 		  
 			 @if($result['dxingzuo'] == '白羊座')
@@ -127,7 +130,7 @@
 			 @else($result['dxingzuo'] == '天蝎座')
 			 <img class="djimg" src="{{asset('images/qingtong/tianxie.png')}}" />
 			 @endif
-	    <span>等级：青铜</span>
+	    <span><font color="red">等级：</font>青铜</span>
 		 
       @elseif($result['dzai']>100 && $result['dzai']<=200)
 		   
@@ -156,7 +159,7 @@
 			 @else($result['dxingzuo'] == '天蝎座')
 			 <img class="djimg" src="{{asset('images/qingtong/tianxie.png')}}" />
 			 @endif
-		   <span>等级：白银</span>
+		   <span><font color="red">等级：</font>白银</span>
 	  @else
 		   
 	         @if($result['dxingzuo'] == '白羊座')
@@ -184,12 +187,10 @@
 			 @else($result['dxingzuo'] == '天蝎座')
 			 <img class="djimg" src="{{asset('images/jinse/tianxie.png')}}" />
 			 @endif
-	       <span>等级: 黄金</span>
+	       <span><font color="red">等级：</font>黄金</span>
 	   
 	  @endif
-					<!--<span><font color="#BD193C">等级：</font>青铜</span>-->
-					<span>臣民：222名</span>
-					<span>点赞：<span id="dianzais">{{$result['dzai']}}</span></span>
+					<span>臣民：<span id="dianzais">{{$result['dzai']}}</span>></span>			
 				</div>
 			
 			</div>
@@ -225,7 +226,6 @@
 
                     	var values = document.getElementById('dianzais');
                     	values.innerText = value;
-
                     	$.ajax({
                     		url:'/home/dianzai/update',
                     		data:{dzai:value,uid:uid},
@@ -260,10 +260,10 @@
 			<div class="concert-tp-box">
 				<div class="zp-new-top" >
 					<div class="zp-new-top-left">个人资料</div>
-					<div class="zp-new-top-right">〉</div>
+					<div class="zp-new-top-right"><img src="../images/top-03.png"/></div>
 				</div>
 				<div class="zl-box">
-					<p>身高：{{$result['dheight']}}cm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;体重：{{$result['dwheight']}}kg</p>
+					<p>身高：{{$result['dheight']}}cm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;体重：{{$result['dwheight']}}kg</p>
 					<p>生日：{{$result['dtime']}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;职业：{{$result['dzhiye']}}</p>
 					<p>十二星座：{{$result['dxingzuo']}}&nbsp;&nbsp;&nbsp;</p>
 				    @if($result['dxingzuo'] == '处女座' || $result['dxingzuo'] == '金牛座' || $result['dxingzuo'] == '摩羯座')
@@ -275,28 +275,24 @@
 					@elseif($result['dxingzuo'] == '白羊座' || $result['dxingzuo'] == '射手座' || $result['dxingzuo'] == '狮子座')
 					<p>星座属性：火</p>
 					@endif
-					<p style="text-indent:2em">简介：{{$result['dcontent']}}</p>	
+					<p>简介：{{$result['dcontent']}}</p>	
 				</div>
 			</div>	
 	
 			<!-- 最新作品 -->
-			<div class="concert-tp-box">
+			<div class="swiper-container">
 				<div class="zp-new-top" >
 					<div class="zp-new-top-left">最新作品</div>
-					<div onclick="hdNew()" class="zp-new-top-right">〉</div>
+					<div onclick="hdNew()" class="zp-new-top-right"><img src="../images/top-03.png"/></div>
 				</div>
-				<div class="zp-new-box">
-					<div class="zp-new">
-						<img src="../images/xq-4.png"/>
+				<div class="swiper-wrapper">
+				    @foreach($result3 as $result3)
+					<div class="swiper-slide">
+						<a href="/home/musicDetails?zcontent={{$result3['zcontent']}}"><img src="{{asset($result3['zimage'])}}"/></a>
 					</div>
-					<div class="zp-new">
-						<img src="../images/xq-4.png"/>
-					</div>
-					<div class="zp-new">
-						<img src="../images/xq-4.png"/>
-					</div>
+					@endforeach
 				</div>
-				<div class="zp-new-box-noe" style="display: none">
+				<!-- <div class="zp-new-box-noe" style="display: none">
 					<div class="zp-new">
 						<img src="../images/xq-4.png"/>
 					</div>
@@ -306,18 +302,27 @@
 					<div class="zp-new">
 						<img src="../images/xq-4.png"/>
 					</div>
-				</div>
+				</div> -->
 			</div>	
-			
+			<script src="{{asset('dist/js/swiper.min.js')}}"></script>
+			<script>
+			   var swiper = new Swiper('.swiper-container', {
+			        pagination: '.swiper-pagination',
+			        slidesPerView: 3,
+			        paginationClickable: true,
+			        spaceBetween: 30,
+			        freeMode: true
+			    });
+		    </script>
 			<!-- 最新动态 -->
 			<div class="concert-tp-box">
 				<div class="fst-box-top-zx" >
 					<div class="fst-box-top-left-zx">最新动态</div>
-					<div onclick="zxdt()" class="fst-box-top-right-zx">〉</div>
+					<div onclick="zxdt()" class="fst-box-top-right-zx"><img src="../images/top-03.png"/></div>
 				</div>
 				<div class="fst-box">
 					<div class="fst-box-left">
-						<img src="{{asset($result['dimage'])}}" style="width:100%;height:100%"/>
+						<img src="{{asset($result['dimage'])}}"/>
 					</div>
 					<div class="fst-box-right">
 					@foreach($result1 as $dd)
@@ -328,12 +333,13 @@
 				</div>
 				<div class="fst-box-noe" style="display: none;">
 					<div class="fst-box-left">
-						<img src="../images/xq-5.png"/>
+						<img src="{{asset($result['dimage'])}}"/>
 					</div>
 					<div class="fst-box-right">
-						<p>.我是不是太帅了</p>
-						<p>.我都被自己帅哭了</p>
-						<p>.我都被自己帅哭了，怎么办</p>
+					@foreach($result1 as $dd)
+						<a href="/home/news/index?nid={{$dd['nid']}}"><p>.{{$dd['ntitle']}}</p></a>
+						
+					@endforeach
 					</div>
 				</div>
 			</div>	
@@ -342,7 +348,7 @@
 			<div class="concert-tp-box">
 				<div class="fst-box-top-fs" >
 					<div class="fst-box-top-left-fs">加入{{$result['dname']}}粉丝团</div>
-					<div class="fst-box-top-right-fs">〉</div>
+					<div class="fst-box-top-right-fs"><img src="../images/top-03.png"/></div>
 				</div>
 				<div class="fst-box">
 					<div class="fst-box-left">
@@ -358,7 +364,7 @@
 			<div class="concert-tp-box">
 				<div class="fst-box-top" >
 					<div class="fst-box-top-left">吐槽</div>
-					<div class="fst-box-top-right">〉</div>
+					<div class="fst-box-top-right"></div>
 				</div>
 				<div class="tc-box">
 				<form action="/home/pinglun/fa" method="get">
@@ -379,14 +385,14 @@
 					<div class="xq-bl-box-right">
 						<span>{{$result2['dname']}}</span>
 						<p>{{$result2['pcontent']}}</p>
-						<!--<p><a href="#">回复</a></p>-->
+						<p><a href="#">回复</a></p>
 						<div class="xq-bl-box-right-dz">
 							<span style="display:none">{{$result2['pid']}}</span><span class="zai"><img src="../images/xq-7.png"/></span> <span id="shu">{{$result2['dianzai']}}</span>
 						</div>
 					</div>
 				</div>
 			 	@endforeach
-				<!--<div class="xq-bl-button">查看更多</div>-->
+				<div class="xq-bl-button">查看更多</div>
 			</div>	
 
 			<script>

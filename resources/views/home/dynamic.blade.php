@@ -45,19 +45,19 @@
 			</ul>
 			<div class="company-box">
 				<ul class="company-introwrap" id="top-none" style="display: none">
-					<a class="font40 fontwhite company-introitem index-compcur" href="../index.html"><li>首页</li></a>
-					<a class="font40 fontwhite company-introitem" href="dynamic.html"><li>动态</li></a>
-					<a class="font40 fontwhite company-introitem" href="sort.html"><li>排行榜</li></a>
-					<a class="font40 fontwhite company-introitem" href="concert.html"><li>演唱会</li></a>
-					<a class="font40 fontwhite company-introitem" href="sort.html"><li>醉强音</li></a>
-					<a class="font40 fontwhite company-introitem" href="sort.html"><li>原创</li></a>
-					<a class="font40 fontwhite company-introitem" href="comic.html"><li>声声漫画</li></a>
-					<a class="font40 fontwhite company-introitem" href="#"><li>ˇ</li></a>
+					<a class="font40 fontwhite company-introitem index-compcur" href="{{asset('/home/index')}}"><li>首页</li></a>
+					<a class="font40 fontwhite company-introitem" href="{{asset('/home/dynamic')}}"><li>动态</li></a>
+					<a class="font40 fontwhite company-introitem" href="{{asset('/home/sort')}}"><li>排行榜</li></a>
+					<a class="font40 fontwhite company-introitem" href="{{asset('/home/concert')}}"><li>演唱会</li></a>
+					<a class="font40 fontwhite company-introitem" href="{{asset('/home/sorts')}}"><li>醉强音</li></a>
+					<a class="font40 fontwhite company-introitem" href="{{url('/home/original')}}"><li>原创</li></a>
+					<a class="font40 fontwhite company-introitem" href="{{asset('/home/comic')}}"><li>声声漫画</li></a>
+					<a class="font40 fontwhite company-introitem" href="#"><li><img class="imgone" src="{{asset('images/index-x.png')}}"/></li></a>
 				</ul>
 				<span class="company-conpic">
 					<img src="../images/top.png"/>
-				</span>
-			</div>
+				</span>			
+			</div>	
 		</header>
 		<section>
 			<!-- 歌手New-->
@@ -77,8 +77,8 @@
 					</div>
 				</div>
 				@endforeach
-		</div>
-
+		</div>	
+		
 		<!-- 演唱会 -->
 		<div class="news-box">
 			<div class="dynamic-box">
@@ -91,8 +91,8 @@
 					<span class="dynamic-box-b">TFBOYS我爱你</span>
 				</div>
 			</div>
-		</div>
-		</section>
+		</div>			
+		</section>	
 		<footer>
 			<div class="footer-note">
 				<p class="font40 note-item">关于我们&nbsp;|&nbsp;帮助中心&nbsp;|&nbsp;友情链接&nbsp;|&nbsp;法律声明&nbsp;|&nbsp;网站地图</p>
@@ -100,7 +100,7 @@
 				<p class="font40 note-item">版权：北京雅典娜文化传播有限公司所有</p>
 			</div>
 		</footer>
-
+		
 	</body>
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script>
@@ -121,5 +121,5 @@
               $("#top-none").slideToggle();
          });
      });
-</script>
+</script>	
 </html>
