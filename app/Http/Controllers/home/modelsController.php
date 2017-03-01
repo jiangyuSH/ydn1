@@ -13,4 +13,27 @@ class modelsController extends Controller
          $user = DB::connection('mysql2')->select('SELECT * FROM user');
         dd($user);
     }
+	
+function dd(){
+	return view('home.2058.index');
+}
+
+//测试操作
+   function ee(Request $request){
+      // $zcontent = $request->file('zcontent'); 
+         //生成文件夹
+	  $dir = date('Y-m-d');
+	  
+	  //生成文件名
+	  $filename = uniqid().'.jpg';
+	  
+	  //组合上传路径存储到数据库中
+	  $path=$dir.'/'.$filename;
+	  
+	  //移动上传文件
+	  $request->file('zcontent')->move($dir,$filename);
+       echo "<script>parent.tan('".$path."')</script>";
+      // echo '<script>parent.alert(123)</script>';
+       // echo $zcontent;
+   }
 }

@@ -21,25 +21,42 @@ class personalController extends Controller
 
    //前台头像修改操作
    public function total(Request $request){
-         //检测文件是否是上传文件
-      if(!$request->hasFile('dimage')){
-          return error('/admins/details/add','请选择要上传的图片',1);
-      }
+    //检测文件是否是上传文件
+       if(!$request->hasFile('dimage')){
+           return error('/admins/details/add','请选择要上传的图片',1);
+       }
+    $value = $request->file('dimage');
+    // dd($value);
+    require '../vendor/autoload.php';
+    $manager = new ImageManager();
+     $dir = date('Y-m-d');
+    if(!is_dir($dir)){
+        mkdir($dir);
+    }else{
+         $dir = date('Y-m-d');
+    $image = $manager->make($value)->resize(300, 200);
+    $cc = uniqid().'.jpg';
+    }
+      $dd = $image->save($dir.'/'.$cc);
+      //    //检测文件是否是上传文件
+      // if(!$request->hasFile('dimage')){
+      //     return error('/admins/details/add','请选择要上传的图片',1);
+      // }
       
-      //生成文件夹
-      $dir = date('Y-m-d');
+      // //生成文件夹
+      // $dir = date('Y-m-d');
       
-      //生成文件名
-      $filename = uniqid().'.jpg';
+      // //生成文件名
+      // $filename = uniqid().'.jpg';
       
-      //组合上传路径存储到数据库中
-      $path=$dir.'/'.$filename;
+      // //组合上传路径存储到数据库中
+      // $path=$dir.'/'.$filename;
       
-      //移动上传文件
-      $request->file('dimage')->move($dir,$filename);
+      // //移动上传文件
+      // $request->file('dimage')->move($dir,$filename);
 
       $value = $request->only(['dimage','uid']);
-      $value['dimage'] = $path;
+      $value['dimage'] = $dir.'/'.$cc;
       $uid = $request->input('uid');
       $result = DB::table('details')->where('uid','=',$uid)->update($value);
       $result1 = DB::table('user')->where('uid','=',$uid)->update(['uimage'=>$path]);
@@ -63,5 +80,10 @@ class personalController extends Controller
         }else{
         	return error('/home/personal','添加失败',1);
         }
+   }
+
+   //前台作品上传
+   public function index(){
+        return view('home.UploadFile');
    }
 }
