@@ -45,14 +45,14 @@
 			</ul>
 			<div class="company-box">
 				<ul class="company-introwrap" id="top-none" style="display: none">
-					<a class="font40 fontwhite company-introitem index-compcur" href="{{asset('/home/index')}}"><li>首页</li></a>
-					<a class="font40 fontwhite company-introitem" href="{{asset('/home/dynamic')}}"><li>动态</li></a>
-					<a class="font40 fontwhite company-introitem" href="{{asset('/home/sort')}}"><li>排行榜</li></a>
-					<a class="font40 fontwhite company-introitem" href="{{asset('/home/concert')}}"><li>演唱会</li></a>
-					<a class="font40 fontwhite company-introitem" href="{{asset('/home/sorts')}}"><li>醉强音</li></a>
-					<a class="font40 fontwhite company-introitem" href="{{url('/home/original')}}"><li>原创</li></a>
-					<a class="font40 fontwhite company-introitem" href="{{asset('/home/comic')}}"><li>声声漫画</li></a>
-					<a class="font40 fontwhite company-introitem" href="#"><li><img class="imgone" src="{{asset('images/index-x.png')}}"/></li></a>
+					<a class="font40 fontwhite company-introitem index-compcur" href="../index.html"><li>首页</li></a>
+					<a class="font40 fontwhite company-introitem" href="dynamic.html"><li>动态</li></a>
+					<a class="font40 fontwhite company-introitem" href="sort.html"><li>排行榜</li></a>
+					<a class="font40 fontwhite company-introitem" href="concert.html"><li>演唱会</li></a>
+					<a class="font40 fontwhite company-introitem" href="sort.html"><li>醉强音</li></a>
+					<a class="font40 fontwhite company-introitem" href="sort.html"><li>原创</li></a>
+					<a class="font40 fontwhite company-introitem" href="comic.html"><li>声声漫画</li></a>
+					<a class="font40 fontwhite company-introitem" href="#"><li>ˇ</li></a>
 				</ul>
 				<div class="company-conwrap">
 					<div class="company-content">

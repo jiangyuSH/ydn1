@@ -8,7 +8,6 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="stylesheet" type="text/css" href="{{asset('home/css/style.css')}}"/>
-		<link rel="stylesheet" href="{{asset('dist/css/swiper.min.css')}}">
 	</head>
 	<body>
 		<header>
@@ -46,14 +45,14 @@
 			</ul>
 			<div class="company-box">
 				<ul class="company-introwrap" id="top-none" style="display: none">
-					<a class="font40 fontwhite company-introitem index-compcur" href="{{asset('/home/index')}}"><li>首页</li></a>
-					<a class="font40 fontwhite company-introitem" href="{{asset('/home/dynamic')}}"><li>动态</li></a>
-					<a class="font40 fontwhite company-introitem" href="{{asset('/home/sort')}}"><li>排行榜</li></a>
-					<a class="font40 fontwhite company-introitem" href="{{asset('/home/concert')}}"><li>演唱会</li></a>
-					<a class="font40 fontwhite company-introitem" href="{{asset('/home/sorts')}}"><li>醉强音</li></a>
-					<a class="font40 fontwhite company-introitem" href="{{url('/home/original')}}"><li>原创</li></a>
-					<a class="font40 fontwhite company-introitem" href="{{asset('/home/comic')}}"><li>声声漫画</li></a>
-					<a class="font40 fontwhite company-introitem" href="#"><li><img class="imgone" src="{{asset('images/index-x.png')}}"/></li></a>
+					<a class="font40 fontwhite company-introitem index-compcur" href="../index.html"><li>首页</li></a>
+					<a class="font40 fontwhite company-introitem" href="dynamic.html"><li>动态</li></a>
+					<a class="font40 fontwhite company-introitem" href="sort.html"><li>排行榜</li></a>
+					<a class="font40 fontwhite company-introitem" href="concert.html"><li>演唱会</li></a>
+					<a class="font40 fontwhite company-introitem" href="sort.html"><li>醉强音</li></a>
+					<a class="font40 fontwhite company-introitem" href="sort.html"><li>原创</li></a>
+					<a class="font40 fontwhite company-introitem" href="comic.html"><li>声声漫画</li></a>
+					<a class="font40 fontwhite company-introitem" href="#"><li>ˇ</li></a>
 				</ul>
 				<span class="company-conpic">
 					<img src="../images/top.png"/>
@@ -74,7 +73,7 @@
 						<img src="{{asset($value['zimage'])}}"/>
 					</div>
 					<div class="yc-box-two">
-						<span><a href="/home/musicDetails?zcontent={{$value['zcontent']}}">{{$value['zname']}}</a></span>
+						<span><a href="/home/musicDetails?zid={{$value['zid']}}&ting={{$value['ting']}}">{{$value['ztitle']}}</a></span>
 						<p>音乐人：{{$value['zname']}}</p>
 						<p><img src="{{asset('images/yc-1.png')}}"/>&nbsp;{{$value['ting']}}</p>
 						<p class="shu">关注:{{$value['guanzhu']}}</p>
@@ -116,7 +115,7 @@
                     	      	  var guanzhushu = $(this).prev().children().eq(3).html();
 		                    	   var dd = guanzhushu.substring(3,10);
 		                    	   dd++;
-		                    	   // alert(dd);
+		                    	   alert(dd);
 		                    	   var zid = $(this).next().html();
 		                    	   var ee = $(this).prev().children().eq(3).html('关注:'+dd);
 		                    	      $.ajax({
@@ -139,7 +138,7 @@
                     	
                     });
 			    </script>
-				<!-- <div id="showYc" style="display: none;">
+				<div id="showYc" style="display: none;">
 					<div class="yc-box">
 						<div class="yc-box-noe">
 							<img src="../images/xq-4.png"/>
@@ -182,23 +181,27 @@
 							<img src="../images/yc-2.png"/>
 						</div>
 					</div>
-				</div> -->
+				</div>
 				
 			</div>	
 			<!-- 热门音乐人 -->
-			<div class="swiper-container">
-				 <div class="zp-new-top" >
+			<div class="concert-tp-box">
+				<div class="zp-new-top" >
 					<div class="zp-new-top-left">音乐人</div>
 					<div onclick="hdNew()" class="zp-new-top-right">〉</div>
-				</div> 
-				<div class="swiper-wrapper">
-				@foreach($result2 as $result2)
-					<div class="swiper-slide">
-						<a href="/home/zuopin/index?uid={{$result2['uid']}}"><img src="{{asset($result2['dimage'])}}"/></a>
-					</div>
-				@endforeach
 				</div>
-				<!-- <div class="zp-new-box-noe" style="display: none">
+				<div class="zp-new-box">
+					<div class="zp-new">
+						<a href="singer.html"><img src="../images/xq-4.png"/></a>
+					</div>
+					<div class="zp-new">
+						<img src="../images/xq-4.png"/>
+					</div>
+					<div class="zp-new">
+						<img src="../images/xq-4.png"/>
+					</div>
+				</div>
+				<div class="zp-new-box-noe" style="display: none">
 					<div class="zp-new">
 						<img src="../images/xq-4.png"/>
 					</div>
@@ -208,20 +211,11 @@
 					<div class="zp-new">
 						<img src="../images/xq-4.png"/>
 					</div>
-				</div> -->
+				</div>
 			</div>
-			<script src="{{asset('dist/js/swiper.min.js')}}"></script>
-			<script>
-			   var swiper = new Swiper('.swiper-container', {
-			        pagination: '.swiper-pagination',
-			        slidesPerView: 3,
-			        paginationClickable: true,
-			        spaceBetween: 30,
-			        freeMode: true
-			    });
-		    </script>
+			
 			<!-- 热门创作人 -->
-			<!-- <div class="reimen-box">
+			<div class="reimen-box">
 				<div class="zp-new-top" >
 					<div class="zp-new-top-left">创作人</div>
 					<div onclick="openYcCz()" class="zp-new-top-right">〉</div>
@@ -346,7 +340,7 @@
 					
 				</div>
 			</div>	
- -->
+
 		</section>	
 		
 		<footer>
