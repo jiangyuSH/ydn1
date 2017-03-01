@@ -10,26 +10,32 @@
 		<link rel="stylesheet" type="text/css" href="{{asset('home/css/style.css')}}"/>
 	</head>
 	<body>
+        <!-- 悬停菜单 -->
+		<div class="OnlineService_Bg">
+			<div class="OnlineService_Box">
+				<!-- <a href="/home/personal"><div class="OnlineService_Phone" style="display: none;"></div></a> -->
+				<a href="/home/UploadFile"><div class="OnlineService_Sign" style="display: none;"></div></a>
+				<div onclick="openMeun()" class="OnlineService_Top"></div>
+			</div>
+		</div>
+
 		<header>
 			<nav>
+				
 				<span class="nav-item menu" id="open-icon">
-					<img src="{{asset('images/sys.png')}}"/>扫一扫
+					<img src="{{asset('images/sys.png')}}"/>
+					<span class="span-top">扫一扫</span>
 				</span>
+			
 				<span class="nav-item logo">
 					<lable id="search-wrap" class="search-wrap">
-					<form id='searchForm' action="{{url('home/search')}}" method="post">
-						{{ csrf_field() }}
 						<input id="search-input" class="search-input"style="color: #999999;" type="text" name="address"  value="请输入关键词搜索" onfocus="if(this.value=='请输入关键词搜索'){this.value=''};this.style.color='#999999';"
 						onblur="if(this.value==''||this.value=='请输入关键词搜索'){this.value='请输入关键词搜索'};this.style.color='#999999';">
 						<button id="search-button" class="search-button" type="submit">
 							<img src="{{asset('images/search.png')}}"/>
 						</button>
-					</form>
-
 					</lable>
 				</span>
-
-
 				@include('home.head')
 				<div class="clearfix"></div>
 			</nav>
@@ -42,45 +48,48 @@
 					<a class="font40 fontwhite company-introitem" href="{{asset('/home/dynamic')}}"><li>动态</li></a>
 					<a class="font40 fontwhite company-introitem" href="{{asset('/home/sort')}}"><li>排行榜</li></a>
 					<a class="font40 fontwhite company-introitem" href="{{asset('/home/concert')}}"><li>演唱会</li></a>
-					<a class="font40 fontwhite company-introitem" href="{{asset('/home/sortss')}}"><li>醉强音</li></a>
+					<a class="font40 fontwhite company-introitem" href="{{asset('/home/sorts')}}"><li>醉强音</li></a>
 					<a class="font40 fontwhite company-introitem" href="{{url('/home/original')}}"><li>原创</li></a>
 					<a class="font40 fontwhite company-introitem" href="{{asset('/home/comic')}}"><li>声声漫画</li></a>
-					<a class="font40 fontwhite company-introitem" href="#"><li>ˇ</li></a>
+					<a class="font40 fontwhite company-introitem" href="#"><li><img class="imgone" src="{{asset('images/index-x.png')}}"/></li></a>
 				</ul>
 				<div class="company-conwrap">
 					<div class="company-content">
 						<span class="company-conpic">
 							<img src="{{asset('images/top.png')}}"/>
-						</span>
+							<div class="public"></div>
+						</span>	
 					</div>
 				</div>
-			</div>
+				
+			</div>	
 		</header>
 		<section>
+			
 			<!-- 十二强 -->
 			<div class="news-box">
-				<ul class="news-wrap">大学生十二强</ul>
+				<ul class="dxs-wrap">大学生十二强</ul>
 				<div class="hz-box">
 				@foreach($result as $value)
 					<div class="hz-one">
-						<a href="/home/details?uid={{$value['uid']}}"><img class="dxs-img" src="{{asset($value['dimage'])}}"/></a>{{$value['dname']}}
+						<p><a href="/home/details?uid={{$value['uid']}}"><img class="dxs-img" src="{{asset($value['dimage'])}}"/></a></p>
+						<p>{{$value['dname']}}</p>
 					</div>
-				@endforeach
-				</div>
+				@endforeach	
+				</div>		
 			</div>
-
+			
 			<!-- lunbo -->
 			<div class="public"></div>
 			<div class="news-box">
-				<ul class="news-wrap">中国最大大学生歌唱平台</ul>
+				<ul class="dxs-wrap">中国最大大学生歌唱平台</ul>
 				<div class="index_banner" id="banner_tabs">
 					<ul>
 						<li><a href="" target="_blank"><img src="{{asset('lunbo/images/index_banner1.jpg')}}" ></a></li>
-						<li><a href="" target="_blank"><img src="{{asset('lunbo/images/index_banner2.jpg')}}" ></a></li>
-						<li><a href="" target="_blank"><img src="{{asset('lunbo/images/index_banner3.jpg')}}" ></a></li>
+						<li><a href="" target="_blank"><img src="{{asset('lunbo/images/index_banner2.jpg')}}" ></a></li>      
+						<li><a href="" target="_blank"><img src="{{asset('lunbo/images/index_banner3.jpg')}}" ></a></li>    
 						<li><a href="" target="_blank"><img src="{{asset('lunbo/images/index_banner4.jpg')}}" ></a></li>
 						<li><a href="" target="_blank"><img src="{{asset('lunbo/images/index_banner5.jpg')}}" ></a></li>
-						<li><a href="" target="_blank"><img src="{{asset('lunbo/images/index_banner6.jpg')}}" ></a></li>
 					</ul>
 					<!--此处的img是用来占位的，在实际使用中，可以另外制作一张全空的图片-->
 					<img style="visibility:hidden;" src="{{asset('lunbo/images/index_banner1.jpg')}}" width="100%">
@@ -93,9 +102,9 @@
 						<span>6</span>
 					</cite>
 					<div class="clear"></div>
-				</div>
+				</div>	
 			</div>
-
+				
 			<!-- 新闻 -->
 			<div class="public"></div>
 			<div class="news-box">
@@ -103,7 +112,7 @@
 				@foreach($result1 as $value)
 				<a href="/home/news/index?nid={{$value['nid']}}"><div class="news-newtitwrap">
 					<div class="news-titwrap-left">
-						<img src="{{asset($value['nimage'])}}" style="width:50%"/>
+						<img src="{{asset($value['nimage'])}}" />
 					</div>
 					<div class="news-titwrap-right">
 						<ul>
@@ -114,15 +123,15 @@
 					</div>
 				</div></a>
 				@endforeach
-				<div class="news-add">
+				<!-- <div class="news-add">
 					展开更多ˇ
-				</div>
-		</div>
+				</div> -->
+		</div>	
 		<div class="public"></div>
-
+		
 		<!-- 演唱会 -->
 			<div class="news-box">
-				<ul class="news-wrap">演唱会</ul>
+				<ul class="dxs-wrap">演唱会</ul>
 				<div class="ych-box">
 					<div class="ychbox-left">
 						<image class="ych-img" src="{{asset('images/ych.png')}}">
@@ -132,48 +141,48 @@
 						</ul>
 					</div>
 					<div class="ychbox-right">
-						<image class="ych-img" src="{{asset('images/ych.png')}}">
+						<image class="ych-img" src="{{asset('images/ych-002.png')}}">
 						<ul>
 							<li class="ych-one">最火热单曲：王凯杰</li>
 							<li class="ych-two">sh48的演唱会</li>
 						</ul>
 					</div>
 				</div>
-
+				
 				<div class="ych-box">
 					<div class="ychbox-left">
-						<image class="ych-img" src="{{asset('images/ych.png')}}">
+						<image class="ych-img" src="{{asset('images/ych-003.png')}}">
 						<ul>
 							<li class="ych-one">最火热单曲：王凯杰</li>
 							<li class="ych-two">sh48的演唱会</li>
 						</ul>
 					</div>
 					<div class="ychbox-right">
-						<image class="ych-img" src="{{asset('images/ych.png')}}">
+						<image class="ych-img" src="{{asset('images/ych-004.png')}}">
 						<ul>
 							<li class="ych-one">最火热单曲：王凯杰</li>
 							<li class="ych-two">sh48的演唱会</li>
 						</ul>
 					</div>
-				</div>
-		</div>
-
-
+				</div>	
+		</div>	
+	
+			
 		<div class="public"></div>
-
+		
 		<!-- 合作机构 -->
 			<div class="news-box">
-				<ul class="news-wrap">合作机构</ul>
-				<div class="hz-box">
+				<ul class="dxs-wrap">合作机构</ul>
+				<div class="hz-box1">
 				@foreach($result2 as $result)
-					<div class="hz-one">
+					<div class="hz-one1">
 						<a href="{{$result['faddress']}}"><img class="hz-img" src="{{asset($result['fimage'])}}"/></a>{{$result['fname']}}
 					</div>
-				@endforeach
-				</div>
-		</div>
+				@endforeach	
+				</div>	
+		</div>			
 		</section>
-
+		
 		<footer>
 			<div class="footer-note">
 				<p class="font40 note-item">关于我们&nbsp;|&nbsp;帮助中心&nbsp;|&nbsp;友情链接&nbsp;|&nbsp;法律声明&nbsp;|&nbsp;网站地图</p>
@@ -181,7 +190,9 @@
 				<p class="font40 note-item">版权：北京雅典娜文化传播有限公司所有</p>
 			</div>
 		</footer>
-
+	
+		<div style="display: none;"><script src="https://s11.cnzz.com/z_stat.php?id=1261329132&web_id=1261329132" language="JavaScript"></script></div>
+	
 	</body>
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('lunbo/js/scroll.js')}}"></script>
@@ -193,17 +204,17 @@
     /*导航展开收起效果代码*/
     $(document).ready(function () {
             $("#open-icon").click(function () {
-                $("#nav-list").slideToggle();
+               $("#nav-list").slideToggle();	   
             });
         });
-    $('#searchForm').submit(function(e){
-        console.log(this);
-        var searchContent = $(this).find('[name=address]').val();
-        if(searchContent == '请输入关键词搜索'){
-			alert('您还未输入关键词');
-			return false;
-        }
-    });
+	
+	/*打开悬停菜单*/
+		function openMeun(){
+			  $(".OnlineService_Phone").slideToggle();
+			  $(".OnlineService_Sign").slideToggle();
+		};
 
-</script>
+	
+	
+</script>	
 </html>
